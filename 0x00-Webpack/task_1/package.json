@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.7.0",
-    "loadash": "^1.0.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
