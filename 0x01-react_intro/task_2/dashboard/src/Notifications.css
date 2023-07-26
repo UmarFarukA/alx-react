@@ -1,0 +1,27 @@
+.Notifications {
+    border: 2px dashed red;
+    padding: 4px;
+    margin-bottom: 1.2rem;
+}
+
+.Notifications p {
+    display: flex;
+    justify-content: space-between;
+}
+
+li[data-default-priority] {
+    color: blue;
+}
+
+li[data-urgent-priority] {
+    color: rgb(249, 72, 72);
+}
+
+li {
+    color: rgb(236, 5, 5);
+}
+
+.close-icon {
+    width: 20px;
+    height: 20px;
+}
