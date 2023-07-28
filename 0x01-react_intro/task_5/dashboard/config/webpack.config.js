@@ -1,19 +1,11 @@
-const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    mode: "production",
-    entry: {
-        main: path.resolve(__dirname, "../src/index.js"),
-    },
+    entry: "./src/index.js",
     output: {
-        path: path.resolve(__dirname, "../dist"),
         filename: "bundle.js",
     },
-    performance: {
-        hints: false,
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000,
-    },
+    mode: "development",
     module: {
         rules: [
             {
@@ -21,18 +13,42 @@ module.exports = {
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.(gif|png|jp?g|svg)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                // type: 'asset/resource',
                 use: [
                     "file-loader",
                     {
                         loader: "image-webpack-loader",
                         options: {
-                            bypassOnDebug: true,
-                            disable: true,
+                            bypassOnDebug: true, // webpack@1.x
+                            disable: true, // webpack@2.x and newer
                         },
                     },
                 ],
             },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ["babel-loader"],
+            },
         ],
     },
+    resolve: {
+        extensions: ["*", ".js", ".jsx"],
+    },
+    devServer: {
+        static: "./dist",
+        compress: true,
+        open: true,
+        hot: true,
+        port: 8564,
+    },
+    devtool: "inline-source-map",
+    plugins: [
+        new HtmlWebpackPlugin({
+            name: "index.html",
+            inject: false,
+            template: "./dist/index.html",
+        }),
+    ],
 };
