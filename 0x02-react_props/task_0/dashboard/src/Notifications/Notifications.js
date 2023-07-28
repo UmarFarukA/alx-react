@@ -3,7 +3,7 @@ import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
 import { getLatestNotification } from "../utils/utils";
 
-export function Notifications() {
+export default function Notifications() {
     return (
         <>
             <div className="Notifications">

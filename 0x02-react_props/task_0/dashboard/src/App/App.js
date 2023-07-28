@@ -5,17 +5,21 @@ import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
     <>
       <Notifications />
+
       <div className="App">
         <Header />
+
         <Login />
+
         <Footer />
+
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+
