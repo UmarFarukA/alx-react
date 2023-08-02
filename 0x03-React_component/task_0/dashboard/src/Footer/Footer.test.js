@@ -1,16 +1,15 @@
-import React from "react";
 import { shallow } from "enzyme";
-import Footer from './Footer';
-import { getFullYear, getFooterCopy } from '../utils/utils';
+import React from "react";
+import Footer from "./Footer";
+import { getFullYear, getFooterCopy } from "../utils/utils";
 
-describe("Footer tests", () => {
-    it("renders without crashing", () => {
-        const footer = shallow(<Footer />);
-        expect(footer.exists()).toBeDefined();
-    });
-
-    it("should render copyright text", () => {
-        const footer = shallow(<Footer />);
-        expect(footer.text()).toEqual(`Copyright ${getFullYear} - ${getFooterCopy}`);
-    });
+describe("Footer test", () => {
+  it("should render without crashing", () => {
+    const wrapper = shallow(<Footer />);
+    expect(wrapper.exists()).toEqual(true);
+  });
+  it("should render the text Copyright", () => {
+    const wrapper = shallow(<Footer />);
+    expect(wrapper.text()).toEqual(`Copyright ${getFullYear()} - ${getFooterCopy()}`);
+  });
 });
